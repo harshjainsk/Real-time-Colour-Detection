@@ -46,7 +46,9 @@ def stackImages(scale, imgArray):
     return ver
 
 
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+
+img = cv2.imread('images/green-rectangle.png')
 cv2.namedWindow("TrackBars")
 cv2.resizeWindow("TrackBars", 640, 240)
 cv2.createTrackbar("Hue Min", "TrackBars", 0, 179, empty)
@@ -57,7 +59,7 @@ cv2.createTrackbar("Val Min", "TrackBars", 153, 255, empty)
 cv2.createTrackbar("Val Max", "TrackBars", 255, 255, empty)
 
 while True:
-    ret, img = cap.read()
+    # ret, img = cap.read()
     imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     h_min = cv2.getTrackbarPos("Hue Min", "TrackBars")
     h_max = cv2.getTrackbarPos("Hue Max", "TrackBars")
@@ -77,4 +79,4 @@ while True:
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
 
-cap.release()
+# cap.release()
